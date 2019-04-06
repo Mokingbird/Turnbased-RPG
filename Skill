@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Skill", menuName = "", order = 1)]
+public class Skill : ScriptableObject
+{
+    public Sprite icon;
+    public float cost;
+    public float power;
+    public TextASset castPattern;
+    public TextAsset aoePattern;
+    public SkillType skillType;
+    public enum SkillType { Attack, Skill };
+    public enum Buff { None, Block, Heal };
+    public enum Debuff { None, Vulnerable, Weakness, Jam };
+    [SerializeField]
+    [Multiline]
+    public string description;
+    
+    public class SkillEffect{
+        public enum Type { None, Buff, Debuff };
+        public Type type;
+        public enum Effect { Jam };
+        public int power;
+    }
+}
