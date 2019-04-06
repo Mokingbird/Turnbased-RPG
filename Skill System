@@ -1,0 +1,42 @@
+private List<GameObject> GetTilesByPattern(TextAsset pattern, GameObject[,] board)
+{
+    List<GameObject> tiles = new List<GameObject>();
+    string[] lines = pattern.Split(new[] { '\r', '\n' });
+    if (pattern != null){
+        int targetColumn = 0;
+        int targetRow = 0;
+        //find target tile 'x'
+        for (int row = lines.Length - 1; row > -1; row--)//x bottom up
+        {
+            for (int column = lines[0].Length - 1; column > -1; column--)//y right to left
+            {
+                if (lines[row][column] == 'x')
+                {
+                    targetColumn = column;
+                    targetRow = row;
+                    break;
+                }
+            }
+        }
+        //Add the affected tiles
+        for (int x = 0; x < lines.Length; x++)
+        {
+            for (int y = 0; y < lines[0].Length; y++)
+            {
+                if (lines[x][y] == '1')
+                {
+                    int modX = targetTile.posX + lines.Length - 1 - x - targetRow;
+                    int modY = targetTile.posY + lines[0].Length - 1 - y - targetColumn;
+                    if (modX >= 0 && modY >= 0 && board.GetLength(0) - 1 >= modX && board.GetLength(1) - 1 >= modY)
+                    {
+                        aoeTs.Add(board[modX, modY]);
+                    }
+                }
+            }
+        }
+    } else if (skill.aoePattern == null)
+    {
+        tiles.Add(targetTile);
+    }
+    return tiles;
+}
