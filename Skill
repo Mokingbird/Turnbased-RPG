@@ -12,8 +12,7 @@ public class Skill : ScriptableObject
     public TextAsset aoePattern;
     public SkillType skillType;
     public enum SkillType { Attack, Skill };
-    public enum Buff { None, Block, Heal };
-    public enum Debuff { None, Vulnerable, Weakness, Jam };
+    public List<SkillEffect> effects;
     [SerializeField]
     [Multiline]
     public string description;
@@ -21,7 +20,7 @@ public class Skill : ScriptableObject
     public class SkillEffect{
         public enum Type { None, Buff, Debuff };
         public Type type;
-        public enum Effect { Jam };
+        public enum Effect { Jam, Weakness, Vulnerable, Block, Heal, Move };
         public int power;
     }
 }
