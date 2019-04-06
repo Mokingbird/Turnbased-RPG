@@ -40,3 +40,11 @@ private List<GameObject> GetTilesByPattern(TextAsset pattern, GameObject[,] boar
     }
     return tiles;
 }
+public void UseSkill(GameObject targetTile, List<GameObject> affectTiles, Skill skill){
+    //Displace unit
+    //Deal damage or heal
+    //Apply effects
+}
+public void ApplySkillEffects(List<GameObject> units){
+    
+}
